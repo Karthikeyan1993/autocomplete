@@ -1,0 +1,23 @@
+.typeHead{
+    height: 100%;
+    width: 200px;
+    background-color: rebeccapurple;
+    border-radius: 2px;
+}
+
+.typeHead ul{
+    margin: 0;
+    padding: 0;
+}
+
+.typeHead ul li{
+    list-style: none;
+}
+.typeHead ul li span{
+    padding: 5px;
+}
+.typeHead ul li:hover{
+    background-color: springgreen;
+    color: black;
+    cursor: pointer;
+}

@@ -1,0 +1,5 @@
+<div class="typeHead" *ngIf="hideMe">
+  <ul>
+    <li (click)="itemClicked(item)" *ngFor="let item of (data |myfilter:property) ;let i=index"><span>{{item.username}}</span></li>
+  </ul>
+</div>
