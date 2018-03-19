@@ -1,2 +1,46 @@
 <input type="text" [(ngModel)]="scripName">
 <app-child (onItemPicked)="doSomething($event)" [property]="scripName"></app-child>
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { matchValidator } from './matchValidator';
+@Component({
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.css']
+})
+export class SignupComponent implements OnInit {
+
+  signUp: FormGroup
+  constructor(private fb: FormBuilder) {
+    this.signUp = this.fb.group({
+      username: ["", Validators.required],
+      password: ["", [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ["", [Validators.required, Validators.minLength(6)]],
+      email: ["", Validators.required]
+    }, { validator: matchValidator("password", "confirmPassword"), updateOn: 'submit' }, )
+  }
+
+
+
+  ngOnInit() {
+  }
+
+  Submit = () => {
+    if (this.signUp.valid) {
+      console.log(this.signUp.value);
+    } else {
+      console.log(this.signUp);
+    }
+  }
+
+}
+import { ValidatorFn, FormGroup } from '@angular/forms';
+export function matchValidator(targetKey: string, matchKey: string) {
+    return (fg: FormGroup): { [key: string]: any } | null => {
+        let _targetVal = fg.controls[targetKey];
+        let _matchKey = fg.controls[matchKey];
+        return _targetVal.value === _matchKey.value ? null : {
+            'mismatch': true
+        }
+    }
+}
