@@ -1,5 +1,53 @@
-<div class="typeHead" *ngIf="hideMe">
-  <ul>
-    <li (click)="itemClicked(item)" *ngFor="let item of (data |myfilter:property) ;let i=index"><span>{{item.username}}</span></li>
-  </ul>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-filled">
+        <div class="panel-heading">
+
+        </div>
+        <div class="panel-body">
+          <app-advanced-chart></app-advanced-chart>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+            <!--<div class="panel panel-filled ld-loading">-->
+      <div class="panel panel-filled ld-loading">
+        <div class="loader">
+          <div class="loader-spin"></div>
+        </div>
+        <div class="panel-heading"></div>
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table table-striped table-bordered table-condensed">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Phone</th>
+                  <th>Street</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Henry</td>
+                  <td>Purus Gravida Sagittis Limited</td>
+                  <td>055 1753 4032</td>
+                </tr>
+                <tr>
+                  <td>Shelly</td>
+                  <td>Posuere Enim Inc.</td>
+                  <td>0313 143 2317</td>
+                </tr>
+                <tr>
+                  <td>Edan</td>
+                  <td>Quisque Imperdiet Company</td>
+                  <td>076 1743 8649</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
