@@ -1,54 +1,55 @@
-<input type="text" [(ngModel)]="scripName">
-<app-child (onItemPicked)="doSomething($event)" [property]="scripName"></app-child>
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { matchValidator } from './matchValidator';
-@Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
-})
-export class SignupComponent implements OnInit {
-
-  signUp: FormGroup
-  constructor(private fb: FormBuilder) {
-    this.signUp = this.fb.group({
-      username: ["", Validators.required],
-      password: ["", [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ["", [Validators.required, Validators.minLength(6)]],
-      email: ["", Validators.required]
-    }, { validator: matchValidator("password", "confirmPassword"), updateOn: 'submit' }, )
-  }
-
-
-
-  ngOnInit() {
-  }
-
-  Submit = () => {
-    if (this.signUp.valid) {
-      console.log(this.signUp.value);
-    } else {
-      console.log(this.signUp);
-    }
-  }
-
-}
-import { ValidatorFn, FormGroup } from '@angular/forms';
-export function matchValidator(targetKey: string, matchKey: string) {
-    return (fg: FormGroup): { [key: string]: any } | null => {
-        let _targetVal = fg.controls[targetKey];
-        let _matchKey = fg.controls[matchKey];
-        return _targetVal.value === _matchKey.value ? null : {
-            'mismatch': true
-        }
-    }
-}
-
-<form novalidate autocomplete="off" (ngSubmit)="Submit()" [formGroup]="signUp">
-  <input type="text" id="username" name="username" formControlName="username">
-  <input type="password" id="username" name="username" formControlName="password">
-  <input type="password" id="confirmPassword" name="confirmPassword" formControlName="confirmPassword">
-  <input type="email" [email]=true id="username" name="username" formControlName="email">
-  <button type="submit">Submit</button>
-</form>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 col-sm-12 col-xm-12">
+      <div class="panel panel-filled">
+        <div class="panel-heading"></div>
+        <div class="panel-body">
+          content
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-12 col-xm-12">
+      <div class="row top-buffer">
+        <div class="col-md-12">
+          <div class="panel panel-filled">
+            <div class="panel-heading"></div>
+            <div class="panel-body">
+              <div class="table-responsive">
+                <table class="table table-striped table-bordered table-condensed">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Phone</th>
+                      <th>Street</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Henry</td>
+                      <td>Purus Gravida Sagittis Limited</td>
+                      <td>055 1753 4032</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row top-buffer">
+        <div class="col-md-8">
+          <div class="row">
+            <div class="col-md-4">
+              <button class="btn btn-w-md btn-danger">Subscribe</button>
+            </div>
+            <div class="col-md-4">
+              <button class="btn btn-w-md btn-danger">Unsubscribe</button>
+            </div>
+            <div class="col-md-4">
+              <button class="btn btn-w-md btn-danger">Button 3</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
